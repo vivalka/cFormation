@@ -48,14 +48,18 @@ pipeline
 		}
 	 }
 	 
-	 stage("tomcat dev deployment")
+	 stage("S3 dev deployment")
 	 {
 	 steps
 		{
-			sshagent(['deploytomcat']) {
+			sshagent(['deployS3']) {
+			
+			withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-key', accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+      
+    
     				
-    				sh 'scp -o StrictHostKeyChecking=no */target/*.war   ec2-user@18.156.163.12:/var/lib/tomcat/webapps'
-  				
+    				sh 'aws deploy push */target/*.war --s3-location s3://codedeploydemobucket --ignore-hidden-files'
+  			}	
 			}
 		}
 	 }
