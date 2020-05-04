@@ -58,7 +58,7 @@ pipeline
       
     
     				
-    				sh 'aws deploy push --application-name Webapp --s3-location s3://codedeploydemobucketvivek/Webapp.zip --region=eu-central-1 --ignore-hidden-files'
+    				sh 'aws deploy push --application-name webapp.war --s3-location s3://codedeploydemobucketvivek/Webapp.zip --region=eu-central-1 --ignore-hidden-files'
   			}	
 			
 		}
