@@ -58,7 +58,7 @@ pipeline
       
     
     				
-    				sh 'aws deploy push */target/*.war --s3-location s3://codedeploydemobucket --ignore-hidden-files'
+    				sh 'aws deploy push */target/*.war --s3-location s3://codedeploydemobucketvivek --ignore-hidden-files'
   			}	
 			}
 		}
