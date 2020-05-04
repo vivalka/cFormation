@@ -54,12 +54,11 @@ pipeline
 		{
 		
 			
-			withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-key', accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-      
+			
     
-    				sh 'aws s3 --region=eu-central-1'
-    				sh 'aws s3 cp webapp.war --s3-location s3://codedeploydemobucketvivek/webApp'
-  			}	
+    				s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'codedeploydemobucketvivek/webApp', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: false, selectedRegion: 'eu-central-1', showDirectlyInBrowser: false, sourceFile: '**/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'SUCCESS', profileName: 'S3Deploy', userMetadata: []
+				
+					
 			
 		}
 	 }
