@@ -52,7 +52,7 @@ pipeline
 	 {
 	 steps
 		{
-			sshagent(['deployS3']) {
+		
 			
 			withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-key', accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
       
@@ -60,7 +60,7 @@ pipeline
     				
     				sh 'aws deploy push */target/*.war --s3-location s3://codedeploydemobucketvivek --ignore-hidden-files'
   			}	
-			}
+			
 		}
 	 }
 	 
