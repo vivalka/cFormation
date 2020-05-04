@@ -57,8 +57,8 @@ pipeline
 			withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-key', accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
       
     
-    				
-    				sh 'aws s3 cp webapp.war --s3-location s3://codedeploydemobucketvivek/webApp --region=eu-central-1'
+    				sh 'aws s3 --region=eu-central-1'
+    				sh 'aws s3 cp webapp.war --s3-location s3://codedeploydemobucketvivek/webApp'
   			}	
 			
 		}
